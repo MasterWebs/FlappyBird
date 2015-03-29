@@ -3,9 +3,10 @@
 	top: 0;
 	left: 0;
 	width: 7em;
-	height: 10em;
+	height: 5em;
 	/*background: blue;*/
-	background-image: url("/sprites/mchead.png");
+	background-image: url("/sprites/frame-1.png");
+	background-repeat: no-repeat;
 	background-size: 100%;
 	border: 1px solid;
 
