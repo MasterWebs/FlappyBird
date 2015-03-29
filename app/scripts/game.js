@@ -62,6 +62,7 @@ window.Game = (function() {
 		this.player.reset();
 		this.pipes1.reset();
 		this.pipes2.reset();
+		this.points = 0;
 	};
 
 	/**
@@ -73,13 +74,22 @@ window.Game = (function() {
 		// Should be refactored into a Scoreboard class.
 		var that = this;
 		var scoreboardEl = this.el.find('.Scoreboard');
+
 		scoreboardEl
 			.addClass('is-visible')
+			.find('.Scoreboard-score-number')
+			.text(this.points);
+
+		scoreboardEl
 			.find('.Scoreboard-restart')
 				.one('click', function() {
 					scoreboardEl.removeClass('is-visible');
 					that.start();
 				});
+	};
+
+	Game.prototype.addPoint = function () {
+		this.points++;
 	};
 
 	/**
