@@ -20,6 +20,24 @@
 	-webkit-animation: 0.4s flap alternate infinite;
 }
 
+.Pipe1-upper {
+	position: absolute;
+	background: green;
+	top: 0;
+	left: 0;
+	width: 5em;
+	height: 5em;
+}
+
+.Pipe1-lower {
+	position: absolute;
+	background: yellow;
+	top: 0;
+	left: 0;
+	width: 5em;
+	height: 5em;
+}
+
 .Scoreboard {
 	position: absolute;
 	left: 50%;
