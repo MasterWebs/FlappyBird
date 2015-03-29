@@ -43,13 +43,13 @@ window.Player = (function() {
 
 		if (Controls.keys.space) {
 			if (this.playing) {
-				this.pos.y -= delta * SPEED * 4;
+				this.pos.y -= delta * SPEED * 3;
 			} else {
 				this.playing = true;
 			}
 		} else {
 			if (this.playing) {
-				this.pos.y += delta * SPEED * 1;
+				this.pos.y += delta * SPEED * 0.75;
 			}
 		}
 
