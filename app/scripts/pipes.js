@@ -7,7 +7,7 @@ window.Pipes = (function () {
 	// for 1024x576px canvas.
 	var SPEED = 30; // * 10 pixels per second
 	var WIDTH = 5;
-	var GAP = 15;
+	var GAP = 20;
 	var INITIAL_POSITION_X = 108;
 
 	var Pipes = function(elUpper, elLower, game) {
@@ -22,16 +22,23 @@ window.Pipes = (function () {
 	 * Resets the state of the pipes for a new game.
 	 */
 	Pipes.prototype.reset = function() {
-		this.pos.x = INITIAL_POSITION_X;
-
-		var lowerHeight = getRandomInt(20, this.game.WORLD_HEIGHT - GAP - 20);
-		var upperHeight = this.game.WORLD_HEIGHT - lowerHeight - GAP;
-
-		this.elUpper.css('height', lowerHeight + 'em');
-		this.elLower.css('height', upperHeight + 'em');
-		this.elLower.css('top', (upperHeight + GAP) + 'em');
+		this.generatePipes();
 
 		this.playing = false;
+	};
+
+	Pipes.prototype.generatePipes = function () {
+		this.pos.x = INITIAL_POSITION_X;
+
+		this.lowerHeight = getRandomInt(10, this.game.WORLD_HEIGHT - GAP - 10);
+		this.upperHeight = this.game.WORLD_HEIGHT - this.lowerHeight - GAP;
+		this.lowerTop = this.upperHeight + GAP;
+		console.log('Heights: ' + this.lowerHeight + ' ' + this.upperHeight);
+		console.log('Top ' + this.lowerTop);
+
+		this.elUpper.css('height', this.upperHeight + 'em');
+		this.elLower.css('top', this.lowerTop + 'em');
+		this.elLower.css('height', this.lowerHeight + 'em');
 	};
 
 	function getRandomInt(min, max) {
@@ -46,7 +53,7 @@ window.Pipes = (function () {
 		}
 
 		if (this.pos.x + WIDTH < 0) {
-			this.reset();
+			this.generatePipes ();
 		}
 
 		this.elUpper.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
