@@ -34,8 +34,6 @@ window.Pipes = (function () {
 		this.lowerHeight = getRandomInt(10, this.game.WORLD_HEIGHT - GAP - 10);
 		this.upperHeight = this.game.WORLD_HEIGHT - this.lowerHeight - GAP;
 		this.lowerTop = this.upperHeight + GAP;
-		console.log('Heights: ' + this.lowerHeight + ' ' + this.upperHeight);
-		console.log('Top ' + this.lowerTop);
 
 		this.lowerPos = this.upperHeight + GAP;
 		this.upperPos = this.upperHeight;
@@ -43,6 +41,8 @@ window.Pipes = (function () {
 		this.elUpper.css('height', this.upperHeight + 'em');
 		this.elLower.css('top', this.lowerTop + 'em');
 		this.elLower.css('height', this.lowerHeight + 'em');
+
+		this.passed = false;
 	};
 
 	function getRandomInt(min, max) {
@@ -61,6 +61,7 @@ window.Pipes = (function () {
 		}
 
 		this.checkCollisionWithPlayer();
+		this.checkIfPlayerPassed();
 
 		this.elUpper.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
 		this.elLower.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
@@ -72,6 +73,13 @@ window.Pipes = (function () {
 			(this.game.player.pos.y <= this.upperPos ||
 			this.game.player.pos.y + PLAYER_HEIGHT >= this.lowerPos)) {
 			return this.game.gameover();
+		}
+	};
+
+	Pipes.prototype.checkIfPlayerPassed = function () {
+		if (!this.passed && this.pos.x + WIDTH < this.game.player.pos.x) {
+			this.passed = true;
+			return this.game.addPoint();
 		}
 	};
 
