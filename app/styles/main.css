@@ -3,25 +3,18 @@
 	top: 0;
 	left: 0;
 	width: 7em;
-	height: 5em;
-	/*background: blue;*/
-	background-image: url("/sprites/frame-1.png");
-	background-repeat: no-repeat;
+	height: 4.9em;
+	bottom: 50%;
+	background: url("/sprites/3.png");
 	background-size: 100%;
-	border: 1px solid;
-
+	
+	-webkit-animation: birdFlap 0.2s steps(3, end) infinite alternate;
 }
 
-.Player-wings {
-	position: absolute;
-	left: 1.25em;
-	top: 2em;
-	height: 1.5em;
-	width: 2.5em;
+@keyframes birdFlap {
+	0% {background-position:0 14.3em;}
+	100% {background-position: 0 0;}
 
-	background: yellow;
-	-webkit-transform-origin: top left;
-	-webkit-animation: 0.4s flap alternate infinite;
 }
 
 .Pipe1-upper {
