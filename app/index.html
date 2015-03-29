@@ -23,8 +23,11 @@
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
+        <h1>Flappy McConahey</h1>
         <div id="Canvas" class="GameCanvas">
+            <div class="clouds"><img src="/sprites/sky.png"></div>
+            <div class="ground"></div>
+
             <div class="Player">
                 <div class="Player-wings"></div>
             </div>
@@ -33,12 +36,12 @@
             <div class="Pipe1-upper"></div>
             <div class="Pipe1-lower"></div>
             
+            
             <div class="Scoreboard">
                 <button class="Scoreboard-restart">
                     <span class="Scoreboard-restartText">Restart</span>
                 </button>
             </div>
-            <div class="sliding-ground"></div>
         </div>
 
         <!-- build:js scripts/vendor.js -->

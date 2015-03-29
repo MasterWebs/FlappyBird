@@ -105,7 +105,20 @@ body {
 	margin-top: -28.8em;
 	overflow: hidden;
 }
-.sliding-ground {
-	background: url("/sprites/Tile.png");
-	background-size: 80px 60px;
+
+img {
+	max-width: 100%;
+	max-height: 100%;
 }
+.clouds {
+	width: 100%;
+}
+
+.ground {
+	background-image: url("/sprites/Tile.png");
+	background-size: 80px 60px;
+	height: 100%;
+	background-repeat: repeat-x;
+	
+}
+
