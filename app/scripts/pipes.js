@@ -8,27 +8,27 @@ window.Pipes = (function () {
 	var SPEED = 30; // * 10 pixels per second
 	var WIDTH = 5;
 	var GAP = 20;
-	var INITIAL_POSITION_X = 108;
 
-	var Pipes = function(elUpper, elLower, game) {
+	var Pipes = function(elUpper, elLower, game, initialPos) {
 		this.elUpper = elUpper;
 		this.elLower = elLower;
 		this.pos =  { x: 0, y: 0 };
 		this.game = game;
 		this.playing = false;
+		this.initialPositionX = initialPos;
 	};
 
 	/**
 	 * Resets the state of the pipes for a new game.
 	 */
 	Pipes.prototype.reset = function() {
-		this.generatePipes();
+		this.generatePipes(this.initialPositionX);
 
 		this.playing = false;
 	};
 
-	Pipes.prototype.generatePipes = function () {
-		this.pos.x = INITIAL_POSITION_X;
+	Pipes.prototype.generatePipes = function (initialPos) {
+		this.pos.x = initialPos;
 
 		this.lowerHeight = getRandomInt(10, this.game.WORLD_HEIGHT - GAP - 10);
 		this.upperHeight = this.game.WORLD_HEIGHT - this.lowerHeight - GAP;
@@ -53,7 +53,7 @@ window.Pipes = (function () {
 		}
 
 		if (this.pos.x + WIDTH < 0) {
-			this.generatePipes ();
+			this.generatePipes (108);
 		}
 
 		this.elUpper.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');

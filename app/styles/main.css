@@ -31,6 +31,24 @@
 
 .Pipe1-lower {
 	position: absolute;
+	background: green;
+	top: 0;
+	left: 0;
+	width: 5em;
+	height: 5em;
+}
+
+.Pipe2-upper {
+	position: absolute;
+	background: yellow;
+	top: 0;
+	left: 0;
+	width: 5em;
+	height: 5em;
+}
+
+.Pipe2-lower {
+	position: absolute;
 	background: yellow;
 	top: 0;
 	left: 0;
