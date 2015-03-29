@@ -7,6 +7,7 @@ window.Pipes = (function () {
 	// for 1024x576px canvas.
 	var SPEED = 30; // * 10 pixels per second
 	var WIDTH = 5;
+	var PLAYER_HEIGHT = 5;
 	var GAP = 20;
 
 	var Pipes = function(elUpper, elLower, game, initialPos) {
@@ -36,6 +37,9 @@ window.Pipes = (function () {
 		console.log('Heights: ' + this.lowerHeight + ' ' + this.upperHeight);
 		console.log('Top ' + this.lowerTop);
 
+		this.lowerPos = this.upperHeight + GAP;
+		this.upperPos = this.upperHeight;
+
 		this.elUpper.css('height', this.upperHeight + 'em');
 		this.elLower.css('top', this.lowerTop + 'em');
 		this.elLower.css('height', this.lowerHeight + 'em');
@@ -56,8 +60,19 @@ window.Pipes = (function () {
 			this.generatePipes (108);
 		}
 
+		this.checkCollisionWithPlayer();
+
 		this.elUpper.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
 		this.elLower.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
+	};
+
+	Pipes.prototype.checkCollisionWithPlayer = function () {
+		if (this.pos.x + WIDTH  >= this.game.player.pos.x &&
+			this.pos.x - WIDTH <= this.game.player.pos.x &&
+			(this.game.player.pos.y <= this.upperPos ||
+			this.game.player.pos.y + PLAYER_HEIGHT >= this.lowerPos)) {
+			return this.game.gameover();
+		}
 	};
 
 	return Pipes;
