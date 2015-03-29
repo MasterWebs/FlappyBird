@@ -12,7 +12,7 @@
 }
 
 @keyframes birdFlap {
-	0% {background-position:0 14.3em;}
+	0% {background-position:0 15em;}
 	100% {background-position: 0 0;}
 
 }
