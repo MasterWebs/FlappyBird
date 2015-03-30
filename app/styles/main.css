@@ -110,17 +110,14 @@ body {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	width: 115.4em;
-	height: 57.6em;
+	width: 102.4em;
+	height: 50.6em;
 	margin-left: -51.2em;
 	margin-top: -28.8em;
 	overflow: hidden;
+	background: white;
 }
 
-img {
-	max-width: 100%;
-	max-height: 100%;
-}
 .clouds {
 	position: absolute;
 	background-image: url("/sprites/sky2.png");
@@ -133,7 +130,7 @@ img {
 
 @keyframes cloudSlide {
 	from { left: 0; }
-	100% { left: -100%; }
+	to { left: -100%; }
 }
 
 
