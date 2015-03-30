@@ -41,18 +41,17 @@ window.Player = (function() {
 			this.pos.y -= delta * SPEED;
 		} */
 
-		if (Controls.keys.space) {
-			if (this.playing) {
-				this.pos.y -= delta * SPEED * 1;
-				//animation up
-				this.flap();
-			} else {
+		if (Controls.didJump()) {
+			if (!this.playing) {
 				this.playing = true;
 			}
+			this.pos.y -= delta * SPEED * 10;
+			// animation up
+			this.flap();
 		} else {
 			if (this.playing) {
-				this.pos.y += delta * SPEED * 1.5;
-				//animation down
+				this.pos.y += delta * SPEED * 0.5;
+				// animation down
 			}
 		}
 
@@ -63,7 +62,9 @@ window.Player = (function() {
 	};
 
 	Player.prototype.flap = function () {
-		this.el.css('transform', 'rotate(-12deg)');
+		this.el.css('-webkit-transform', 'rotate(-20deg)');
+		this.el.css('-webkit-transform-origin', '0 0');
+		console.log('rotate');
 	};
 
 	Player.prototype.checkCollisionWithBounds = function() {

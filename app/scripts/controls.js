@@ -22,9 +22,13 @@ window.Controls = (function() {
     var Controls = function() {
         this._didJump = false;
         this.keys = {};
+        this.mouseclicked = false;
         $(window)
             .on('keydown', this._onKeyDown.bind(this))
             .on('keyup', this._onKeyUp.bind(this));
+        $('.GameCanvas')
+            .on('mousedown', this._onMouseDown.bind(this))
+            .on('mouseup', this._onMouseUp.bind(this));
     };
 
     Controls.prototype._onKeyDown = function(e) {
@@ -47,6 +51,18 @@ window.Controls = (function() {
             this.keys[keyName] = false;
             return false;
         }
+    };
+
+    Controls.prototype._onMouseDown = function() {
+        if (!this.mouseclicked) {
+            this._didJump = true;
+            this.mouseclicked = true;
+        }
+    };
+
+    Controls.prototype._onMouseUp = function() {
+        this.mouseclicked = false;
+        this._didJump = false;
     };
 
     /**
