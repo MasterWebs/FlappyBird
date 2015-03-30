@@ -42,12 +42,11 @@ window.Player = (function() {
 		} */
 
 		if (Controls.keys.space) {
-			if (this.playing) {
-				this.pos.y -= delta * SPEED * 1;
-				//animation up
-			} else {
+			if (!this.playing) {
 				this.playing = true;
 			}
+
+			this.pos.y -= delta * SPEED * 1;
 		} else {
 			if (this.playing) {
 				this.pos.y += delta * SPEED * 1.5;
