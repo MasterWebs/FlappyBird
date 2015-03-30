@@ -69,15 +69,6 @@
 	transition: transform 0.5s;
 }
 
-@keyframes flap {
-	from {
-		transform: rotateX(0);
-	}
-	to {
-		transform: rotateX(180deg);
-	}
-}
-
 /**
 * Reset transform to animate it into the correct spot on the screen.
 */
@@ -132,12 +123,19 @@ img {
 }
 .clouds {
 	position: absolute;
-	background-image: url("/sprites/sky.png");
+	background-image: url("/sprites/sky2.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
-	width: 100%;
-	height: 100%
+	width: 200%;
+	height: 100%;
+	-webkit-animation:cloudSlide 5s linear infinite;
 }
+
+@keyframes cloudSlide {
+	from { left: 0; }
+	100% { left: -100%; }
+}
+
 
 .mountains {
 	position: absolute;
@@ -151,8 +149,8 @@ img {
 	position: absolute;
 	background-image: url("/sprites/ground.png");
 	background-size: 100%;
-	width: 100%;
 	height: 100%;
+	width: 100%;	
 }
 
 
