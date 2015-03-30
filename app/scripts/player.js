@@ -45,6 +45,7 @@ window.Player = (function() {
 			if (this.playing) {
 				this.pos.y -= delta * SPEED * 1;
 				//animation up
+				this.flap();
 			} else {
 				this.playing = true;
 			}
@@ -59,6 +60,10 @@ window.Player = (function() {
 
 		// Update UI
 		this.el.css('transform', 'translate3d(' + this.pos.x + 'em, ' + this.pos.y + 'em, 0em)');
+	};
+
+	Player.prototype.flap = function () {
+		this.el.css('transform', 'rotate(-12deg)');
 	};
 
 	Player.prototype.checkCollisionWithBounds = function() {

@@ -1,4 +1,5 @@
 .Player {
+	display: inline-block;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -8,12 +9,16 @@
 	background: url("/sprites/3.png");
 	background-size: 100%;
 	
+	
+   
+
 	-webkit-animation: birdFlap 0.2s steps(3, end) infinite alternate;
+
 }
 
 @keyframes birdFlap {
-	0% {background-position:0 15em;}
-	100% {background-position: 0 0;}
+	from {background-position:0 15em;}
+	to {background-position: 0 0;}
 
 }
 
