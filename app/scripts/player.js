@@ -25,6 +25,7 @@ window.Player = (function() {
 		this.pos.x = INITIAL_POSITION_X;
 		this.pos.y = INITIAL_POSITION_Y;
 		this.playing = false;
+		this.el.removeClass('flapping');
 	};
 
 	Player.prototype.onFrame = function(delta) {
@@ -45,7 +46,7 @@ window.Player = (function() {
 			if (!this.playing) {
 				this.playing = true;
 			}
-			this.pos.y -= delta * SPEED * 10;
+			this.pos.y -= delta * SPEED * 8;
 			// animation up
 			this.flap();
 		} else {
@@ -62,8 +63,10 @@ window.Player = (function() {
 	};
 
 	Player.prototype.flap = function () {
-		this.el.css('-webkit-transform', 'rotate(-20deg)');
-		this.el.css('-webkit-transform-origin', '0 0');
+		// this.el.css('transform', 'rotate(-20deg)');
+		// this.el.css('-webkit-transform-origin', '0 0');
+		// this.el.style.webkitAnimationPlayState = 'running';
+		this.el.addClass('flapping');
 		console.log('rotate');
 	};
 

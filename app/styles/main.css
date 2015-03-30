@@ -8,18 +8,34 @@
 	bottom: 50%;
 	background: url("/sprites/3.png");
 	background-size: 100%;
-	
-	
-   
 
-	-webkit-animation: birdFlap 0.2s steps(3, end) infinite alternate;
+	/*-webkit-animation: birdFlap 0.2s steps(3, end) alternate infinite*/
 
 }
 
-@keyframes birdFlap {
+.Player.flapping {
+	-webkit-animation: birdFlap 0.2s steps(3, end) alternate infinite;
+}
+
+.Player.rotating {
+	-webkit-animation: rotate 0.5s;
+}
+
+@-webkit-keyframes birdFlap {
 	from {background-position:0 15em;}
 	to {background-position: 0 0;}
+}
 
+@-webkit-keyframes rotate {
+	from {
+		-webkit-transform: none;
+	}
+	40% {
+		-webkit-transform: rotate(-30deg);
+	}
+	to {
+		transform: rotate(90deg);
+	}
 }
 
 .Pipe1-upper {

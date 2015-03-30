@@ -17,6 +17,7 @@ window.Game = (function() {
 
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
+		$('#mute-button').on('click', this.muteMusic.bind(this));
 	};
 
 	/**
@@ -41,6 +42,13 @@ window.Game = (function() {
 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);
+	};
+
+	Game.prototype.muteMusic = function() {
+		console.log('muteMusic');
+		var music = document.getElementById('music');
+
+		music.muted = !music.muted;
 	};
 
 	/**
