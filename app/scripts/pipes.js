@@ -8,7 +8,7 @@ window.Pipes = (function () {
 	var SPEED = 30; // * 10 pixels per second
 	var WIDTH = 5;
 	var PLAYER_HEIGHT = 5;
-	var GAP = 20;
+	var GAP = 15;
 
 	var Pipes = function(elUpper, elLower, game, initialPos) {
 		this.elUpper = elUpper;
@@ -52,8 +52,9 @@ window.Pipes = (function () {
 	Pipes.prototype.onFrame = function(delta) {
 		if (this.playing) {
 			this.pos.x -= delta * SPEED;
-		} else if (Controls.keys.space) {
+		} else if (Controls.keys.space || Controls.mouseclicked) {
 			this.playing = true;
+			console.log('clicked');
 		}
 
 		if (this.pos.x + WIDTH < 0) {

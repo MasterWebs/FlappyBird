@@ -41,16 +41,16 @@ window.Player = (function() {
 			this.pos.y -= delta * SPEED;
 		} */
 
-		if (Controls.keys.space) {
+		if (Controls.didJump()) {
 			if (!this.playing) {
 				this.playing = true;
 			}
-
-			this.pos.y -= delta * SPEED * 1;
+			this.pos.y -= delta * SPEED * 10;
+			// animation up
 		} else {
 			if (this.playing) {
-				this.pos.y += delta * SPEED * 1.5;
-				//animation down
+				this.pos.y += delta * SPEED * 0.5;
+				// animation down
 			}
 		}
 
