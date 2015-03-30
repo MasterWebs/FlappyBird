@@ -67,6 +67,8 @@ window.Player = (function() {
 		// this.el.css('-webkit-transform-origin', '0 0');
 		// this.el.style.webkitAnimationPlayState = 'running';
 		this.el.addClass('flapping');
+		var flapSound = document.getElementById('flap-sound');
+		flapSound.play();
 		console.log('rotate');
 	};
 
