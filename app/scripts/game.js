@@ -97,6 +97,7 @@ window.Game = (function() {
 
 	Game.prototype.addPoint = function () {
 		this.points++;
+		$('.Score').text(this.points);
 	};
 
 	/**
