@@ -119,6 +119,21 @@ body {
 	background: white;
 }
 
+#mute-button {
+	position: absolute;
+	height: 5em;
+	width: 5em;
+	background-size: 100%;
+}
+
+#mute-button.mute {
+	background-image: url('/sprites/mute.png');
+}
+
+#mute-button.unmute {
+	background-image: url('/sprites/unmute.png');
+}
+
 .clouds {
 	position: absolute;
 	background-image: url("/sprites/sky2.png");
@@ -133,7 +148,6 @@ body {
 	from { left: 0; }
 	to { left: -100%; }
 }
-
 
 .mountains {
 	position: absolute;
@@ -150,7 +164,10 @@ body {
 	height: 100%;
 	width: 200%;	
 
-	-webkit-animation: groundSlide 8s linear infinite;
+}
+
+.ground.sliding {
+	-webkit-animation: groundSlide 3.43s linear infinite;
 }
 
 @keyframes groundSlide {
