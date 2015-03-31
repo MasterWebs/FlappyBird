@@ -42,6 +42,7 @@
 	position: absolute;
 	background-image: url('/sprites/tree_tile.jpg');
 	background-size: 100%;
+	
 	background-repeat: repeat;
 }
 

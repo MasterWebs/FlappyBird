@@ -16,6 +16,7 @@ window.Player = (function() {
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
 		this.playing = false;
+		this.deg = 0;
 	};
 
 	/**
@@ -29,37 +30,36 @@ window.Player = (function() {
 	};
 
 	Player.prototype.onFrame = function(delta) {
-		/* if (Controls.keys.right) {
-			this.pos.x += delta * SPEED;
-		}
-		if (Controls.keys.left) {
-			this.pos.x -= delta * SPEED;
-		}
-		if (Controls.keys.down) {
-			this.pos.y += delta * SPEED;
-		}
-		if (Controls.keys.up) {
-			this.pos.y -= delta * SPEED;
-		} */
-
+		var degrees = 0;
 		if (Controls.didJump()) {
 			if (!this.playing) {
 				this.playing = true;
 			}
-			this.pos.y -= delta * SPEED * 10;
+			this.pos.y -= delta * SPEED * 13;
 			// animation up
+			if (this.deg > -45) {
+				this.deg = -45;
+				degrees = this.deg;
+			}
 			this.flap();
 		} else {
 			if (this.playing) {
-				this.pos.y += delta * SPEED * 0.3;
+				this.pos.y += delta * SPEED * 0.7;
 				// animation down
+				if (this.deg < 90) {
+					this.deg += 2;
+					degrees = this.deg;
+				} else {
+					degrees = 90;
+				}
 			}
 		}
 
 		this.checkCollisionWithBounds();
 
 		// Update UI
-		this.el.css('transform', 'translate3d(' + this.pos.x + 'em, ' + this.pos.y + 'em, 0em)');
+		this.el.css('-webkit-transform', 'translate3d(' + this.pos.x + 'em, ' + this.pos.y + 'em, 0em)' +
+										 'rotate(' + degrees + 'deg)');
 	};
 
 	Player.prototype.flap = function () {
@@ -69,11 +69,10 @@ window.Player = (function() {
 		this.el.addClass('flapping');
 		var flapSound = document.getElementById('flap-sound');
 		flapSound.play();
-		console.log('rotate');
 	};
 
 	Player.prototype.checkCollisionWithBounds = function() {
-		if (this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
+		if (this.pos.y + HEIGHT > this.game.DISTANCE_TO_GROUND) {
 			return this.game.gameover();
 		}
 	};

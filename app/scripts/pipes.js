@@ -8,7 +8,7 @@ window.Pipes = (function () {
 	var SPEED = 30; // * 10 pixels per second
 	var WIDTH = 10;
 	var PLAYER_HEIGHT = 5;
-	var GAP = 15;
+	var GAP = 13.7;
 
 	var Pipes = function(elUpper, elLower, game, initialPos) {
 		this.elUpper = elUpper;
@@ -31,8 +31,8 @@ window.Pipes = (function () {
 	Pipes.prototype.generatePipes = function (initialPos) {
 		this.pos.x = initialPos;
 
-		this.lowerHeight = getRandomInt(10, this.game.WORLD_HEIGHT - GAP - 10);
-		this.upperHeight = this.game.WORLD_HEIGHT - this.lowerHeight - GAP;
+		this.lowerHeight = getRandomInt(10, this.game.DISTANCE_TO_GROUND - GAP - 10);
+		this.upperHeight = this.game.DISTANCE_TO_GROUND - this.lowerHeight - GAP;
 		this.lowerTop = this.upperHeight + GAP;
 
 		this.lowerPos = this.upperHeight + GAP;
@@ -56,7 +56,6 @@ window.Pipes = (function () {
 			this.pos.x -= delta * SPEED;
 		} else if (Controls.keys.space || Controls.mouseclicked) {
 			this.playing = true;
-			console.log('clicked');
 		}
 
 		if (this.pos.x + WIDTH < 0) {
