@@ -10,9 +10,9 @@ window.Game = (function() {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.pipes1 = new window.Pipes(this.el.find('#Pipe1-upper'),
-				this.el.find('#Pipe1-lower'), this, 130);
+				this.el.find('#Pipe1-lower'), this, 168);
 		this.pipes2 = new window.Pipes(this.el.find('#Pipe2-upper'),
-				this.el.find('#Pipe2-lower'), this, 70);
+				this.el.find('#Pipe2-lower'), this, 105);
 		this.isPlaying = false;
 
 		this.ground = this.el.find('.ground');
