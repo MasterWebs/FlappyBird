@@ -168,7 +168,7 @@ body {
 }
 
 .ground.sliding {
-	-webkit-animation: groundSlide 8s linear infinite;
+	-webkit-animation: groundSlide 6s linear infinite;
 }
 
 @keyframes groundSlide {
