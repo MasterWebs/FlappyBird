@@ -15,9 +15,11 @@ window.Game = (function() {
 				this.el.find('#Pipe2-lower'), this, 70);
 		this.isPlaying = false;
 
+		this.ground = this.el.find('.ground');
+
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
-		this.muteButton = this.el.find('#mute-button');
+		this.muteButton = $('#mute-button');
 		this.muteButton.on('click', this.muteMusic.bind(this));
 		this.muteButton.addClass('mute');
 	};
@@ -81,6 +83,7 @@ window.Game = (function() {
 		this.pipes2.reset();
 		this.points = 0;
 		$('.Score').text(this.points);
+		this.ground.addClass('sliding');
 	};
 
 	/**
@@ -88,6 +91,8 @@ window.Game = (function() {
 	 */
 	Game.prototype.gameover = function() {
 		this.isPlaying = false;
+
+		this.ground.removeClass('sliding');
 
 		// Should be refactored into a Scoreboard class.
 		var that = this;

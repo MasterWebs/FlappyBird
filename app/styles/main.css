@@ -165,6 +165,9 @@ body {
 	height: 100%;
 	width: 200%;	
 
+}
+
+.ground.sliding {
 	-webkit-animation: groundSlide 8s linear infinite;
 }
 
