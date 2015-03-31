@@ -46,12 +46,12 @@ window.Player = (function() {
 			if (!this.playing) {
 				this.playing = true;
 			}
-			this.pos.y -= delta * SPEED * 8;
+			this.pos.y -= delta * SPEED * 10;
 			// animation up
 			this.flap();
 		} else {
 			if (this.playing) {
-				this.pos.y += delta * SPEED * 0.5;
+				this.pos.y += delta * SPEED * 0.3;
 				// animation down
 			}
 		}
