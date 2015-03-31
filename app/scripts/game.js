@@ -45,7 +45,6 @@ window.Game = (function() {
 	};
 
 	Game.prototype.muteMusic = function() {
-		console.log('muteMusic');
 		var music = document.getElementById('music');
 
 		music.muted = !music.muted;
@@ -98,6 +97,7 @@ window.Game = (function() {
 
 	Game.prototype.addPoint = function () {
 		this.points++;
+		$('.Score').text(this.points);
 	};
 
 	/**
@@ -105,6 +105,7 @@ window.Game = (function() {
 	 */
 	Game.prototype.WORLD_WIDTH = 102.4;
 	Game.prototype.WORLD_HEIGHT = 57.6;
+	Game.prototype.DISTANCE_TO_GROUND = 44.3;
 
 	return Game;
 })();
