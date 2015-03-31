@@ -10,8 +10,6 @@ window.Pipes = (function () {
 	var PLAYER_HEIGHT = 4.9;
 	var PLAYER_WIDTH = 7;
 	var GAP = 13.7;
-	var DEAD = false;
-	var GAME_OVER = false;
 
 	var Pipes = function(elUpper, elLower, game, initialPos) {
 		this.elUpper = elUpper;
@@ -20,6 +18,8 @@ window.Pipes = (function () {
 		this.game = game;
 		this.playing = false;
 		this.initialPositionX = initialPos;
+		this.dead = false;
+		this.gameOver = false;
 	};
 
 	/**
@@ -27,7 +27,8 @@ window.Pipes = (function () {
 	 */
 	Pipes.prototype.reset = function() {
 		this.generatePipes(this.initialPositionX);
-
+		this.dead = false;
+		this.gameOver = false;
 		this.playing = false;
 	};
 
@@ -68,7 +69,7 @@ window.Pipes = (function () {
 		this.checkCollisionWithPlayer();
 		this.checkIfPlayerPassed();
 
-		if(!DEAD) {
+		if(!this.dead) {
 			this.elUpper.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
 			this.elLower.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
 		} else { //Bird go down
@@ -77,9 +78,8 @@ window.Pipes = (function () {
 				this.game.player.el.css('-webkit-transform',
 										'translate3d(' + this.game.player.pos.x + 'em, ' + this.game.player.pos.y + 'em, 0em)' +
 										'rotate(90deg)');
-			} else {
-				GAME_OVER = true;
-			}
+			} 
+			this.gameOver = true;
 		}
 	};
 
@@ -89,9 +89,8 @@ window.Pipes = (function () {
 			(this.game.player.pos.y <= this.upperPos ||
 			this.game.player.pos.y + PLAYER_HEIGHT >= this.lowerPos)) {
 
-			
-			DEAD = true;
-			if(GAME_OVER) {
+			this.dead = true;
+			if(this.gameOver) {
 				return this.game.gameover();
 			}
 		}
