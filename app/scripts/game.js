@@ -21,7 +21,7 @@ window.Game = (function() {
 		this.onFrame = this.onFrame.bind(this);
 		this.muteButton = $('#mute-button');
 		this.muteButton.on('click', this.muteMusic.bind(this));
-		this.muteButton.addClass('mute');
+		// this.muteButton.addClass('mute');
 	};
 
 	/**
@@ -52,11 +52,11 @@ window.Game = (function() {
 		var music = document.getElementById('music');
 		
 		if (music.muted) {
-			this.muteButton.removeClass('unmute');
-			this.muteButton.addClass('mute');
+			//this.muteButton.removeClass('unmute').addClass('mute');
+			this.muteButton.text('Mute');
 		} else {
-			this.muteButton.removeClass('mute');
-			this.muteButton.addClass('unmute');
+			//this.muteButton.removeClass('mute').addClass('unmute');
+			this.muteButton.text('Unmute');
 		}
 
 		music.muted = !music.muted;
