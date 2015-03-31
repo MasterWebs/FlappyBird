@@ -119,6 +119,21 @@ body {
 	background: white;
 }
 
+#mute-button {
+	position: absolute;
+	height: 5em;
+	width: 5em;
+	background-size: 100%;
+}
+
+#mute-button.mute {
+	background-image: url('/sprites/mute.png');
+}
+
+#mute-button.unmute {
+	background-image: url('/sprites/unmute.png');
+}
+
 .clouds {
 	position: absolute;
 	background-image: url("/sprites/sky2.png");

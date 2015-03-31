@@ -17,7 +17,9 @@ window.Game = (function() {
 
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
-		$('#mute-button').on('click', this.muteMusic.bind(this));
+		this.muteButton = this.el.find('#mute-button');
+		this.muteButton.on('click', this.muteMusic.bind(this));
+		this.muteButton.addClass('mute');
 	};
 
 	/**
@@ -46,6 +48,14 @@ window.Game = (function() {
 
 	Game.prototype.muteMusic = function() {
 		var music = document.getElementById('music');
+		
+		if (music.muted) {
+			this.muteButton.removeClass('unmute');
+			this.muteButton.addClass('mute');
+		} else {
+			this.muteButton.removeClass('mute');
+			this.muteButton.addClass('unmute');
+		}
 
 		music.muted = !music.muted;
 	};
@@ -70,6 +80,7 @@ window.Game = (function() {
 		this.pipes1.reset();
 		this.pipes2.reset();
 		this.points = 0;
+		$('.Score').text(this.points);
 	};
 
 	/**
