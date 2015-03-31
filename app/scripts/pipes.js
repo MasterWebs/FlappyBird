@@ -11,7 +11,7 @@ window.Pipes = (function () {
 	var PLAYER_WIDTH = 7;
 	var GAP = 13.7;
 	var DEAD = false;
-	var OVER = false;
+	var GAME_OVER = false;
 
 	var Pipes = function(elUpper, elLower, game, initialPos) {
 		this.elUpper = elUpper;
@@ -76,7 +76,7 @@ window.Pipes = (function () {
 				this.game.player.pos.y += 0.5;
 				this.game.player.el.css('-webkit-transform', 'translate3d(' + this.game.player.pos.x + 'em, ' + this.game.player.pos.y + 'em, 0em)');
 			} else {
-				OVER = true;
+				GAME_OVER = true;
 			}
 		}
 	};
@@ -89,7 +89,7 @@ window.Pipes = (function () {
 
 			
 			DEAD = true;
-			if(OVER) {
+			if(GAME_OVER) {
 				return this.game.gameover();
 			}
 		}
