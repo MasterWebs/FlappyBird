@@ -126,7 +126,7 @@ body {
 	background-size: 100%;
 	width: 200%;
 	height: 100%;
-	-webkit-animation:cloudSlide 5s linear infinite;
+	-webkit-animation:cloudSlide 20s linear infinite;
 }
 
 @keyframes cloudSlide {
@@ -145,10 +145,17 @@ body {
 
 .ground {
 	position: absolute;
-	background-image: url("/sprites/ground.png");
+	background-image: url("/sprites/ground_double.png");
 	background-size: 100%;
 	height: 100%;
-	width: 100%;	
+	width: 200%;	
+
+	-webkit-animation: groundSlide 8s linear infinite;
+}
+
+@keyframes groundSlide {
+	from { left: 0; }
+	to {left: -100%;}
 }
 
 
