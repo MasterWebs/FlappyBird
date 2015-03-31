@@ -6,7 +6,7 @@ window.Pipes = (function () {
 	// All these constants are in em's, multiply by 10 pixels
 	// for 1024x576px canvas.
 	var SPEED = 30; // * 10 pixels per second
-	var WIDTH = 5;
+	var WIDTH = 10;
 	var PLAYER_HEIGHT = 5;
 	var GAP = 15;
 
@@ -39,6 +39,8 @@ window.Pipes = (function () {
 		this.upperPos = this.upperHeight;
 
 		this.elUpper.css('height', this.upperHeight + 'em');
+		this.elUpper.css('width', WIDTH + 'em');
+		this.elLower.css('width', WIDTH + 'em');
 		this.elLower.css('top', this.lowerTop + 'em');
 		this.elLower.css('height', this.lowerHeight + 'em');
 
@@ -69,8 +71,8 @@ window.Pipes = (function () {
 	};
 
 	Pipes.prototype.checkCollisionWithPlayer = function () {
-		if (this.pos.x + WIDTH  >= this.game.player.pos.x &&
-			this.pos.x - WIDTH <= this.game.player.pos.x &&
+		if (this.pos.x + PLAYER_HEIGHT  >= this.game.player.pos.x &&
+			this.pos.x - PLAYER_HEIGHT <= this.game.player.pos.x &&
 			(this.game.player.pos.y <= this.upperPos ||
 			this.game.player.pos.y + PLAYER_HEIGHT >= this.lowerPos)) {
 			return this.game.gameover();
