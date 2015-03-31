@@ -74,7 +74,9 @@ window.Pipes = (function () {
 		} else { //Bird go down
 			if(this.game.player.pos.y < this.game.DISTANCE_TO_GROUND) {
 				this.game.player.pos.y += 0.5;
-				this.game.player.el.css('-webkit-transform', 'translate3d(' + this.game.player.pos.x + 'em, ' + this.game.player.pos.y + 'em, 0em)');
+				this.game.player.el.css('-webkit-transform',
+										'translate3d(' + this.game.player.pos.x + 'em, ' + this.game.player.pos.y + 'em, 0em)' +
+										'rotate(90deg)');
 			} else {
 				GAME_OVER = true;
 			}
