@@ -9,6 +9,8 @@ window.Pipes = (function () {
 	var WIDTH = 10;
 	var PLAYER_HEIGHT = 5;
 	var GAP = 13.7;
+	var DEAD = false;
+	var OVER = false;
 
 	var Pipes = function(elUpper, elLower, game, initialPos) {
 		this.elUpper = elUpper;
@@ -65,8 +67,17 @@ window.Pipes = (function () {
 		this.checkCollisionWithPlayer();
 		this.checkIfPlayerPassed();
 
-		this.elUpper.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
-		this.elLower.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
+		if(!DEAD) {
+			this.elUpper.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
+			this.elLower.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
+		} else { //Bird go down
+			if(this.game.player.pos.y < this.game.DISTANCE_TO_GROUND) {
+				this.game.player.pos.y += 0.5;
+				this.game.player.el.css('-webkit-transform', 'translate3d(' + this.game.player.pos.x + 'em, ' + this.game.player.pos.y + 'em, 0em)');
+			} else {
+				OVER = true;
+			}
+		}
 	};
 
 	Pipes.prototype.checkCollisionWithPlayer = function () {
@@ -74,7 +85,12 @@ window.Pipes = (function () {
 			this.pos.x - PLAYER_HEIGHT <= this.game.player.pos.x &&
 			(this.game.player.pos.y <= this.upperPos ||
 			this.game.player.pos.y + PLAYER_HEIGHT >= this.lowerPos)) {
-			return this.game.gameover();
+
+			
+			DEAD = true;
+			if(OVER) {
+				return this.game.gameover();
+			}
 		}
 	};
 
