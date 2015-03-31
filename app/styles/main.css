@@ -149,7 +149,6 @@ body {
 	to { left: -100%; }
 }
 
-
 .mountains {
 	position: absolute;
 	background: url("/sprites/mountain.png");
@@ -168,7 +167,7 @@ body {
 }
 
 .ground.sliding {
-	-webkit-animation: groundSlide 6s linear infinite;
+	-webkit-animation: groundSlide 3.43s linear infinite;
 }
 
 @keyframes groundSlide {
