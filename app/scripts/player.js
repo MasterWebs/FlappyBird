@@ -63,8 +63,8 @@ window.Player = (function() {
 	};
 
 	Player.prototype.flap = function () {
-		// this.el.css('transform', 'rotate(-20deg)');
-		// this.el.css('-webkit-transform-origin', '0 0');
+		this.el.css('-webkit-transform', 'rotate(-20deg)');
+		//this.el.css('-webkit-transform-origin', '0 0');
 		// this.el.style.webkitAnimationPlayState = 'running';
 		this.el.addClass('flapping');
 		var flapSound = document.getElementById('flap-sound');
