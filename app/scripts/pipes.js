@@ -78,8 +78,9 @@ window.Pipes = (function () {
 				this.game.player.el.css('-webkit-transform',
 										'translate3d(' + this.game.player.pos.x + 'em, ' + this.game.player.pos.y + 'em, 0em)' +
 										'rotate(90deg)');
-			} 
-			this.gameOver = true;
+			} else {
+				this.gameOver = true;
+			}
 		}
 	};
 
