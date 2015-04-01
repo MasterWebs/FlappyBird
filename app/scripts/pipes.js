@@ -91,9 +91,13 @@ window.Pipes = (function () {
 			(this.game.player.pos.y <= this.upperPos ||
 			this.game.player.pos.y + PLAYER_HEIGHT >= this.lowerPos)) {
 
+			var crash = document.getElementById('crash');
+			crash.play();
+
 			STOP = true;
 			this.game.player.isDead = true;
 			this.game.ground.removeClass('sliding');	//ground stop as bird hit a pipe
+
 			if(this.gameOver) {
 				return this.game.gameover();
 			}
