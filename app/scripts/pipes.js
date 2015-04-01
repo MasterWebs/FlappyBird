@@ -70,8 +70,8 @@ window.Pipes = (function () {
 		this.checkIfPlayerPassed();
 
 		if(!this.dead) {
-			this.elUpper.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
-			this.elLower.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
+			this.elUpper.css('transform', 'translateZ(0em) translateX(' + this.pos.x + 'em)');
+			this.elLower.css('transform', 'translateZ(0em) translateX(' + this.pos.x + 'em)');
 		} else { //Bird go down
 			if(this.game.player.pos.y < this.game.DISTANCE_TO_GROUND) {
 				this.game.player.pos.y += 0.5;
