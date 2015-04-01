@@ -10,6 +10,7 @@ window.Pipes = (function () {
 	var PLAYER_HEIGHT = 4.9;
 	var PLAYER_WIDTH = 7;
 	var GAP = 13.7;
+	var STOP = false;
 
 	var Pipes = function(elUpper, elLower, game, initialPos) {
 		this.elUpper = elUpper;
@@ -18,7 +19,6 @@ window.Pipes = (function () {
 		this.game = game;
 		this.playing = false;
 		this.initialPositionX = initialPos;
-		this.dead = false;
 		this.gameOver = false;
 	};
 
@@ -30,6 +30,7 @@ window.Pipes = (function () {
 		this.dead = false;
 		this.gameOver = false;
 		this.playing = false;
+		STOP = false;
 	};
 
 	Pipes.prototype.generatePipes = function (initialPos) {
@@ -56,29 +57,29 @@ window.Pipes = (function () {
 	}
 
 	Pipes.prototype.onFrame = function(delta) {
-		if (this.playing) {
-			this.pos.x -= delta * SPEED;
-		} else if (Controls.keys.space || Controls.mouseclicked) {
-			this.playing = true;
-		}
+		if(!STOP) {
+			if (this.playing) {
+				this.pos.x -= delta * SPEED;
+			} else if (Controls.keys.space || Controls.mouseclicked) {
+				this.playing = true;
+			}
 
-		if (this.pos.x + WIDTH < 0) {
-			this.generatePipes (108);
-		}
+			if (this.pos.x + WIDTH < 0) {
+				this.generatePipes (108);
+			}
 
-		this.checkCollisionWithPlayer();
-		this.checkIfPlayerPassed();
+			this.checkCollisionWithPlayer();
+			this.checkIfPlayerPassed();
 
-		if(!this.dead) {
-			this.elUpper.css('transform', 'translateZ(0em) translateX(' + this.pos.x + 'em)');
-			this.elLower.css('transform', 'translateZ(0em) translateX(' + this.pos.x + 'em)');
-		} else { //Bird go down
+			this.elUpper.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
+			this.elLower.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
+		} else {	 //Bird dead animaiton
 			if(this.game.player.pos.y < this.game.DISTANCE_TO_GROUND) {
 				this.game.player.pos.y += 0.5;
 				this.game.player.el.css('-webkit-transform',
 										'translate3d(' + this.game.player.pos.x + 'em, ' + this.game.player.pos.y + 'em, 0em)' +
 										'rotate(90deg)');
-			} else {
+			} else {	//When the animation is done we can return gameover
 				this.gameOver = true;
 			}
 		}
@@ -90,7 +91,9 @@ window.Pipes = (function () {
 			(this.game.player.pos.y <= this.upperPos ||
 			this.game.player.pos.y + PLAYER_HEIGHT >= this.lowerPos)) {
 
-			this.dead = true;
+			STOP = true;
+			this.game.player.isDead = true;
+			this.game.ground.removeClass('sliding');	//ground stop as bird hit a pipe
 			if(this.gameOver) {
 				return this.game.gameover();
 			}
