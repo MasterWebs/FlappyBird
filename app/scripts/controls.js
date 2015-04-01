@@ -22,7 +22,7 @@ window.Controls = (function() {
     var Controls = function() {
         this._didJump = false;
         this.keys = {};
-        this.mouseclicked = false;
+        this.muteButtonClicked = false;
         $(window)
             .on('keydown', this._onKeyDown.bind(this))
             .on('keyup', this._onKeyUp.bind(this));
@@ -53,8 +53,9 @@ window.Controls = (function() {
         }
     };
 
-    Controls.prototype._onMouseDown = function() {
-        if (!this.mouseclicked) {
+    Controls.prototype._onMouseDown = function(e) {
+        var target = $(e.target);
+        if (!this.mouseclicked && !target.is('button')) {
             this._didJump = true;
             this.mouseclicked = true;
         }
