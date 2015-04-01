@@ -17,6 +17,7 @@ window.Player = (function() {
 		this.pos = { x: 0, y: 0 };
 		this.playing = false;
 		this.deg = 0;
+		this.isDead = false;
 	};
 
 	/**
@@ -26,31 +27,34 @@ window.Player = (function() {
 		this.pos.x = INITIAL_POSITION_X;
 		this.pos.y = INITIAL_POSITION_Y;
 		this.playing = false;
+		this.isDead = false;
 		this.el.removeClass('flapping');
 	};
 
 	Player.prototype.onFrame = function(delta) {
 		var degrees = 0;
-		if (Controls.didJump()) {
-			if (!this.playing) {
-				this.playing = true;
-			}
-			this.pos.y -= delta * SPEED * 13;
-			// animation up
-			if (this.deg > -45) {
-				this.deg = -45;
-				degrees = this.deg;
-			}
-			this.flap();
-		} else {
-			if (this.playing) {
-				this.pos.y += delta * SPEED * 0.7;
-				// animation down
-				if (this.deg < 90) {
-					this.deg += 2;
+		if(!this.isDead) {
+			if (Controls.didJump()) {
+				if (!this.playing) {
+					this.playing = true;
+				}
+				this.pos.y -= delta * SPEED * 13;
+				// animation up
+				if (this.deg > -45) {
+					this.deg = -45;
 					degrees = this.deg;
-				} else {
-					degrees = 90;
+				}
+				this.flap();
+			} else {
+				if (this.playing) {
+					this.pos.y += delta * SPEED * 0.7;
+					// animation down
+					if (this.deg < 90) {
+						this.deg += 2;
+						degrees = this.deg;
+					} else {
+						degrees = 90;
+					}
 				}
 			}
 		}
@@ -60,6 +64,7 @@ window.Player = (function() {
 		// Update UI
 		this.el.css('-webkit-transform', 'translate3d(' + this.pos.x + 'em, ' + this.pos.y + 'em, 0em)' +
 										 'rotate3d(0, 0, 1, ' + degrees + 'deg)');
+		
 	};
 
 	Player.prototype.flap = function () {
