@@ -59,7 +59,7 @@ window.Player = (function() {
 
 		// Update UI
 		this.el.css('-webkit-transform', 'translate3d(' + this.pos.x + 'em, ' + this.pos.y + 'em, 0em)' +
-										 'rotate(' + degrees + 'deg)');
+										 'rotate3d(0, 0, 1, ' + degrees + 'deg)');
 	};
 
 	Player.prototype.flap = function () {

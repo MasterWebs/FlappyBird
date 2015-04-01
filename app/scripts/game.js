@@ -8,6 +8,7 @@ window.Game = (function() {
 	 */
 	var Game = function(el) {
 		this.el = el;
+		this.fitScreen();
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.pipes1 = new window.Pipes(this.el.find('#Pipe1-upper'),
 				this.el.find('#Pipe1-lower'), this, 168);
@@ -19,9 +20,9 @@ window.Game = (function() {
 
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
-		this.muteButton = $('#mute-button');
+		this.muteButton = this.el.find('#mute-button');
 		this.muteButton.on('click', this.muteMusic.bind(this));
-		this.muteButton.addClass('mute');
+		// this.muteButton.addClass('mute');
 	};
 
 	/**
@@ -52,14 +53,22 @@ window.Game = (function() {
 		var music = document.getElementById('music');
 		
 		if (music.muted) {
-			this.muteButton.removeClass('unmute');
-			this.muteButton.addClass('mute');
+			//this.muteButton.removeClass('unmute').addClass('mute');
+			this.muteButton.text('Mute');
 		} else {
-			this.muteButton.removeClass('mute');
-			this.muteButton.addClass('unmute');
+			//this.muteButton.removeClass('mute').addClass('unmute');
+			this.muteButton.text('Unmute');
 		}
 
 		music.muted = !music.muted;
+	};
+
+	Game.prototype.fitScreen = function () {
+		var fontSize = Math.min( 10, Math.min(
+			window.innerWidth / 106.4,
+			window.innerHeight / 50.6
+		));
+		this.el.css('font-size', fontSize + 'px');
 	};
 
 	/**

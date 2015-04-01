@@ -73,13 +73,13 @@ window.Pipes = (function () {
 
 			this.elUpper.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
 			this.elLower.css('transform', 'translateZ(0) translateX(' + this.pos.x + 'em)');
-		} else { //Bird go down
+		} else {	 //Bird dead animaiton
 			if(this.game.player.pos.y < this.game.DISTANCE_TO_GROUND) {
 				this.game.player.pos.y += 0.5;
 				this.game.player.el.css('-webkit-transform',
 										'translate3d(' + this.game.player.pos.x + 'em, ' + this.game.player.pos.y + 'em, 0em)' +
 										'rotate(90deg)');
-			} else {
+			} else {	//When the animation is done we can return gameover
 				this.gameOver = true;
 			}
 		}
@@ -92,6 +92,7 @@ window.Pipes = (function () {
 			this.game.player.pos.y + PLAYER_HEIGHT >= this.lowerPos)) {
 
 			STOP = true;
+			this.game.ground.removeClass('sliding');	//ground stop as bird hit a pipe
 			if(this.gameOver) {
 				return this.game.gameover();
 			}
