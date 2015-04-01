@@ -28,7 +28,9 @@ window.Controls = (function() {
             .on('keyup', this._onKeyUp.bind(this));
         $('.GameCanvas')
             .on('mousedown', this._onMouseDown.bind(this))
-            .on('mouseup', this._onMouseUp.bind(this));
+            .on('mouseup', this._onMouseUp.bind(this))
+            .on('touchstart', this._onMouseDown.bind(this))
+            .on('touchend', this._onMouseUp.bind(this));
     };
 
     Controls.prototype._onKeyDown = function(e) {

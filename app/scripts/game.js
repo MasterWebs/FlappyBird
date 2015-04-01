@@ -65,7 +65,7 @@ window.Game = (function() {
 
 	Game.prototype.fitScreen = function () {
 		var fontSize = Math.min( 10, Math.min(
-			window.innerWidth / 106.4,
+			window.innerWidth / 102.4,
 			window.innerHeight / 50.6
 		));
 		this.el.css('font-size', fontSize + 'px');
