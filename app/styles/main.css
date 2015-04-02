@@ -165,7 +165,7 @@ body {
 	width: 200%;
 	height: 100%;
 	-webkit-transform: translate3d(0,0,0);
-	-webkit-animation:cloudSlide 5s linear infinite;
+	-webkit-animation:cloudSlide 50s linear infinite;
 }
 
 @keyframes cloudSlide {
@@ -183,12 +183,13 @@ body {
 }
 
 .mountains.sliding {
-	-webkit-animation: mountainsSlide 100s linear infinite;
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-animation: mountainsSlide 150s linear infinite;
 }
 
 @keyframes mountainsSlide {
-	from { -webkit-transform: translate3d(0em, 0em, 0em); }
-	to { -webkit-transform: translate3d(-102.4em, 0em, 0em); }
+	from { left: 0; }
+	to { left: -100%; }
 }
 
 .ground {
@@ -201,12 +202,13 @@ body {
 }
 
 .ground.sliding {
+	-webkit-transform: translate3d(0,0,0);
 	-webkit-animation: groundSlide 3.43s linear infinite;
 }
 
 @keyframes groundSlide {
-	from { -webkit-transform: translate3d(0em, 0em, 0em); }
-	to { -webkit-transform: translate3d(-102.4em, 0em, 0em);}
+	from { left: 0; }
+	to { left: -100%; }
 }
 
 .mute {
