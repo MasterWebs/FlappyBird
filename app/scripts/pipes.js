@@ -97,6 +97,7 @@ window.Pipes = (function () {
 			STOP = true;
 			this.game.player.isDead = true;
 			this.game.ground.removeClass('sliding');	//ground stop as bird hit a pipe
+			this.game.player.el.removeClass('flapping');
 
 			if(this.gameOver) {
 				return this.game.gameover();

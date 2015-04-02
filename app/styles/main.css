@@ -162,9 +162,9 @@ body {
 	background-image: url("/sprites/sky2.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
-	width: 200%;
-	height: 100%;
-	-webkit-animation:cloudSlide 60s linear infinite;
+	width: 204.8em;
+	height: 50.6em;
+	-webkit-animation:cloudSlide 4s linear infinite;
 }
 
 @keyframes cloudSlide {
