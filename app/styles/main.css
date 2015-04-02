@@ -162,22 +162,33 @@ body {
 	background-image: url("/sprites/sky2.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
-	width: 204.8em;
-	height: 50.6em;
-	-webkit-animation:cloudSlide 4s linear infinite;
+	width: 200%;
+	height: 100%;
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-animation:cloudSlide 5s linear infinite;
 }
 
 @keyframes cloudSlide {
-	from { -webkit-transform: translate3d(0em, 0em, 0em); }
-	to { -webkit-transform: translate3d(-102.4em, 0em, 0em); }
+	from { left: 0; }
+	to { left: -100%; }
+
 }
 
 .mountains {
 	position: absolute;
-	background: url("/sprites/mountain.png");
+	background: url("/sprites/mountains.png");
 	background-size: 100%;
-	width: 100%;
-	height: 100%;
+	width: 200%;
+	height: 100%;	
+}
+
+.mountains.sliding {
+	-webkit-animation: mountainsSlide 100s linear infinite;
+}
+
+@keyframes mountainsSlide {
+	from { -webkit-transform: translate3d(0em, 0em, 0em); }
+	to { -webkit-transform: translate3d(-102.4em, 0em, 0em); }
 }
 
 .ground {

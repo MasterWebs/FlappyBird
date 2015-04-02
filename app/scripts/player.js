@@ -75,6 +75,9 @@ window.Player = (function() {
 
 	Player.prototype.checkCollisionWithBounds = function() {
 		if (this.pos.y + HEIGHT > this.game.DISTANCE_TO_GROUND) {
+			var crash = document.getElementById('crash');
+			crash.play();
+			this.el.removeClass('flapping');
 			return this.game.gameover();
 		}
 	};
