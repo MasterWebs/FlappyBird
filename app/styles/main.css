@@ -120,6 +120,7 @@ body {
 }
 
 #mute-button {
+	/* generated button from http://www.bestcssbuttongenerator.com */
 	position: absolute;
 	-moz-box-shadow:inset 0px 1px 0px 0px #caefab;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
