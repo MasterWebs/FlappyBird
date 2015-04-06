@@ -7,6 +7,7 @@ This game project has the following:
 * A simple game loop which calculates delta and can be started and stopped.
 * A player entity which can be moved around the canvas using the arrow keys.
 * A "Game Over" screen when player is moved outside bounds, where the game can be restarted.
+* The window is resizable and the game responds to touch controls, making it responsive
 
 ## Setup
 
