@@ -18,6 +18,8 @@ window.Game = (function() {
 
 		this.ground = this.el.find('.ground');
 
+		this.highScore = 0;
+
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
 		this.muteButton = this.el.find('#mute-button');
@@ -107,10 +109,18 @@ window.Game = (function() {
 		var that = this;
 		var scoreboardEl = this.el.find('.Scoreboard');
 
+		if (this.points > this.highScore) {
+			this.highScore = this.points;
+		}
+
 		scoreboardEl
 			.addClass('is-visible')
 			.find('.Scoreboard-score-number')
 			.text(this.points);
+
+		scoreboardEl
+			.find('.Scoreboard-highscore-number')
+			.text(this.highScore);
 
 		scoreboardEl
 			.find('.Scoreboard-restart')
