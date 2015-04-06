@@ -24,7 +24,6 @@ window.Game = (function() {
 		this.onFrame = this.onFrame.bind(this);
 		this.muteButton = this.el.find('#mute-button');
 		this.muteButton.on('click', this.muteMusic.bind(this));
-		// this.muteButton.addClass('mute');
 	};
 
 	/**
@@ -55,10 +54,8 @@ window.Game = (function() {
 		var music = document.getElementById('music');
 		
 		if (music.muted) {
-			//this.muteButton.removeClass('unmute').addClass('mute');
 			this.muteButton.text('Mute');
 		} else {
-			//this.muteButton.removeClass('mute').addClass('unmute');
 			this.muteButton.text('Unmute');
 		}
 
@@ -105,7 +102,6 @@ window.Game = (function() {
 
 		this.ground.removeClass('sliding');
 
-		// Should be refactored into a Scoreboard class.
 		var that = this;
 		var scoreboardEl = this.el.find('.Scoreboard');
 

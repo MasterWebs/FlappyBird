@@ -6,7 +6,6 @@ window.Player = (function() {
 	// All these constants are in em's, multiply by 10 pixels
 	// for 1024x576px canvas.
 	var SPEED = 30; // * 10 pixels per second
-	// var WIDTH = 5;
 	var HEIGHT = 4.9;
 	var INITIAL_POSITION_X = 30;
 	var INITIAL_POSITION_Y = 25;

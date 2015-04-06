@@ -8,9 +8,6 @@
 	bottom: 50%;
 	background: url("/sprites/3.png");
 	background-size: 100%;
-
-	/*-webkit-animation: birdFlap 0.2s steps(3, end) alternate infinite*/
-
 }
 
 .Player.flapping {
@@ -187,17 +184,6 @@ body {
 	width: 200%;
 	height: 100%;	
 }
-
-/*
-.mountains.sliding {
-	-webkit-transform: translate3d(0,0,0);
-	-webkit-animation: mountainsSlide 10s linear infinite;
-}
-
-@keyframes mountainsSlide {
-	from { left: 0; }
-	to { left: -100%; }
-}*/
 
 .ground {
 	position: absolute;
