@@ -17,7 +17,6 @@ window.Game = (function() {
 		this.isPlaying = false;
 
 		this.ground = this.el.find('.ground');
-		this.mountains = this.el.find('.mountains');
 
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
@@ -94,7 +93,6 @@ window.Game = (function() {
 		this.points = 0;
 		$('.Score').text(this.points);
 		this.ground.addClass('sliding');
-		this.mountains.addClass('sliding');
 	};
 
 	/**
@@ -104,7 +102,6 @@ window.Game = (function() {
 		this.isPlaying = false;
 
 		this.ground.removeClass('sliding');
-		this.mountains.removeClass('sliding');
 
 		// Should be refactored into a Scoreboard class.
 		var that = this;

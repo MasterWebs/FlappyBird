@@ -183,15 +183,16 @@ body {
 	height: 100%;	
 }
 
+/*
 .mountains.sliding {
 	-webkit-transform: translate3d(0,0,0);
-	-webkit-animation: mountainsSlide 150s linear infinite;
+	-webkit-animation: mountainsSlide 10s linear infinite;
 }
 
 @keyframes mountainsSlide {
 	from { left: 0; }
 	to { left: -100%; }
-}
+}*/
 
 .ground {
 	position: absolute;
